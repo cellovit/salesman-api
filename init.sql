@@ -1,1 +1,1 @@
-CREATE DATABASE crud-api;
+CREATE DATABASE crud;
