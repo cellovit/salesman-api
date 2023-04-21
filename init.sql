@@ -1,1 +1,1 @@
-CREATE DATABASE salesman;
+CREATE DATABASE crud-api;
