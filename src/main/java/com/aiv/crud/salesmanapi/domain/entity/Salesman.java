@@ -2,6 +2,7 @@ package com.aiv.crud.salesmanapi.domain.entity;
 
 import com.aiv.crud.salesmanapi.domain.enums.HiringTypeEnum;
 import com.aiv.crud.salesmanapi.domain.validators.CpfOrCnpj;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -10,8 +11,9 @@ import lombok.Data;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Transient;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Data
@@ -21,7 +23,7 @@ public class Salesman {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     @Column(unique = true, nullable = false)
     private String registration; //matricula
@@ -30,8 +32,9 @@ public class Salesman {
     @Column(nullable = false)
     private String name;
 
-    // validar formato data
-    private LocalDateTime birthDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthDate;
 
     @CPF
     @Column(unique = true)
