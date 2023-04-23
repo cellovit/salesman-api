@@ -14,7 +14,6 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Data
 @Entity
@@ -61,9 +60,5 @@ public class Salesman {
     @Transient
     @Column(nullable = false)
     private transient String branch;
-
-    public Salesman(String num) {
-        this.registration = String.format("%d-OUT1", ThreadLocalRandom.current().nextInt(10000000, 99999999));
-    }
 
 }

@@ -1,10 +1,11 @@
 package com.aiv.crud.salesmanapi.service.impl;
 
 import com.aiv.crud.salesmanapi.domain.dto.SalesmanDTO;
+import com.aiv.crud.salesmanapi.domain.enums.HiringTypeEnum;
 import com.aiv.crud.salesmanapi.domain.mapper.SalesmanMapper;
+import com.aiv.crud.salesmanapi.exception.EntityNotFoundException;
 import com.aiv.crud.salesmanapi.repository.SalesmanRepository;
 import com.aiv.crud.salesmanapi.service.SalesmanService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -25,14 +26,6 @@ public class SalesmanServiceImpl implements SalesmanService {
     private final SalesmanMapper mapper;
 
     @Override
-    public List<SalesmanDTO> listAll() {
-        return repository.findAll()
-                .stream()
-                .map(mapper::entityToDTO)
-                .toList();
-    }
-
-    @Override
     public Page<SalesmanDTO> listPageable(Pageable page) {
         List<SalesmanDTO> list = repository.findAll(page)
                 .map(mapper::entityToDTO)
@@ -43,17 +36,35 @@ public class SalesmanServiceImpl implements SalesmanService {
     @Override
     public SalesmanDTO findById(long id) {
         return mapper.entityToDTO(repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Não foi possível encontrar um vendedor com este ID")));
+                .orElseThrow(() -> new EntityNotFoundException("Não foi possível encontrar um vendedor com este ID")));
     }
 
     @Override
     @Transactional
-    public SalesmanDTO save(@Valid SalesmanDTO dto) {
+    public SalesmanDTO save(SalesmanDTO dto) {
         var entity = mapper.DTOToEntity(dto);
-        int registerNumber = ThreadLocalRandom.current().nextInt(10000000, 99999999);
-        String registrationString = String.format("%d-%s", registerNumber, dto.getHiringType().getSuffix());
-        entity.setRegistration(registrationString);
+        entity.setRegistration(generateRegistrationString(dto.getHiringType()));
         return mapper.entityToDTO(repository.save(entity));
+    }
+
+    @Override
+    @Transactional
+    public SalesmanDTO update(long id, SalesmanDTO dto) {
+        findById(id);
+        var toSave = mapper.DTOToEntity(dto);
+        toSave.setId(id);
+        return mapper.entityToDTO(repository.save(toSave));
+    }
+
+    @Override
+    @Transactional
+    public void delete(long id) {
+        repository.deleteById(id);
+    }
+
+    private String generateRegistrationString(HiringTypeEnum hiringType ) {
+        int registerNumber = ThreadLocalRandom.current().nextInt(10000000, 99999999);
+        return String.format("%d-%s", registerNumber, hiringType.getSuffix());
     }
 
 }
