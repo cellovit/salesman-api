@@ -43,14 +43,6 @@ Em um segundo momento o usuário deve ter alguma forma de receber os dados cadas
 sobre erro, caso tenha ocorrido
 Atentar para o documento a ser registrado pelo Vendedor. Pessoas Jurídicas utilizam CNPJ e os demais CPF
 
-COMO ENTREGAR:
-
-Em um repositório privado do github com permissão de leitura para os seguintes usuários: fbiopereira,
-guilhermeponciano-viahub, JeanKelvin, bruno-gomes
-Responda esse e-mail para todos com o link do repositório
-Assim que você enviar o repositório, avaliaremos seu código e marcaremos um papo com outros desenvolvedores para que
-você explique o que você entregou
-
 O QUE SERÁ AVALIADO:
 
 A qualidade da sua solução como um todo, incluindo organização de código, testes, tecnologias e frameworks utilizados
