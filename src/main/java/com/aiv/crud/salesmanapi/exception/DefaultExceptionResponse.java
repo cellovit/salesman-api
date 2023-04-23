@@ -1,17 +1,17 @@
 package com.aiv.crud.salesmanapi.exception;
 
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
+@SuperBuilder(toBuilder = true)
 @Data
-@Builder
 public class DefaultExceptionResponse {
 
     private String message;
-    private Instant timestamp;
+    private LocalDateTime timestamp;
     private int status;
 
 }

@@ -26,11 +26,11 @@ public class SalesmanCreateRequest {
     @JsonProperty("dataNascimento")
     private LocalDate birthDate;
 
-    @CpfOrCnpj(message = "O campo cpfCnpj deve ser preenchido com um cpf ou cnpj válido")
+    @CpfOrCnpj(message = "O campo 'cpfCnpj' deve ser preenchido com um cpf ou cnpj válido")
     @NotBlank(message = "O campo 'cpfCnpj' não pode estar vazio")
     private String cpfCnpj;
 
-    @Email(message = "O campo email deve ser preenchido com um valor válido")
+    @Email(message = "O campo 'email' deve ser preenchido com um valor válido")
     @NotBlank(message = "O campo 'email' não pode estar vazio")
     private String email;
 

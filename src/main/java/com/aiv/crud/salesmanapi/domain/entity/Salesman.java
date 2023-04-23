@@ -8,8 +8,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.hibernate.validator.constraints.br.CNPJ;
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -35,17 +33,9 @@ public class Salesman {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
 
-    @CPF
-    @Column(unique = true)
-    private String cpf;
-
-    @CNPJ
-    @Column(unique = true)
-    private String cnpj;
-
     @CpfOrCnpj
     @NotBlank
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String cpfCnpj;
 
     @NotBlank
