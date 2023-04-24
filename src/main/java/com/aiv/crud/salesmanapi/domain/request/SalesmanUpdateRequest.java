@@ -13,36 +13,36 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @Data
-public class SalesmanRequest {
-
-    private long id;
-
+public class SalesmanUpdateRequest {
+    @NotBlank(message = "O campo 'matricula' não pode estar vazio")
     @JsonProperty("matricula")
     private String registration; //matricula
 
-    @NotBlank
+    @NotBlank(message = "O campo 'nome' não pode estar vazio")
     @JsonProperty("nome")
     private String name;
 
     // validar formato data
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @NotNull
+    @NotNull(message = "O campo 'dataNascimento' não pode estar vazio")
     @JsonProperty("dataNascimento")
     private LocalDate birthDate;
 
-    @CpfOrCnpj
-    @NotBlank
+    @CpfOrCnpj(message = "O campo 'cpfCnpj' deve ser preenchido com um cpf ou cnpj válido")
+    @NotBlank(message = "O campo 'cpfCnpj' não pode estar vazio")
     private String cpfCnpj;
 
-    @NotBlank
-    @Email
+    @Email(message = "O campo 'email' deve ser preenchido com um valor válido")
+    @NotBlank(message = "O campo 'email' não pode estar vazio")
     private String email;
 
-    @NotNull
+    @NotNull(message = "O campo 'tipoContrato' não pode estar vazio")
     @JsonProperty("tipoContrato")
     private HiringTypeEnum hiringType;
 
-    private transient String branch;
+//    @NotNull(message = "O campo 'idFilial' não pode estar vazio")
+//    @JsonProperty("idFilial")
+//    private String branchId;
 
 }

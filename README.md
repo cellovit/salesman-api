@@ -36,12 +36,12 @@ Cidade, UF, Tipo, Ativo, Data Cadastro, Última Atualização
 
 REGRAS DE NEGÓCIO:
 
-A matrícula deve ser um sequencial gerado automaticamente
-O cadastro deve ser feito de forma assíncrona observando-se os seguintes pontos:
-A API deve dar um retorno de imediato de recebimento dos dados
-Em um segundo momento o usuário deve ter alguma forma de receber os dados cadastrados do Vendedor ou alguma explicação
-sobre erro, caso tenha ocorrido
-Atentar para o documento a ser registrado pelo Vendedor. Pessoas Jurídicas utilizam CNPJ e os demais CPF
+    - A matrícula deve ser um sequencial gerado automaticamente
+    - O cadastro deve ser feito de forma assíncrona observando-se os seguintes pontos:
+    - A API deve dar um retorno de imediato de recebimento dos dados
+    - Em um segundo momento o usuário deve ter alguma forma de receber os dados cadastrados do Vendedor ou alguma explicação
+      sobre erro, caso tenha ocorrido
+    - Atentar para o documento a ser registrado pelo Vendedor. Pessoas Jurídicas utilizam CNPJ e os demais CPF
 
 O QUE SERÁ AVALIADO:
 
