@@ -38,8 +38,8 @@ public class SalesmanCreateRequest {
     @JsonProperty("tipoContrato")
     private HiringTypeEnum hiringType;
 
-//    @NotNull(message = "O campo 'idFilial' não pode estar vazio")
-//    @JsonProperty("idFilial")
-//    private String branchId;
+    @NotNull(message = "O campo 'idFilial' não pode estar vazio")
+    @JsonProperty("idFilial")
+    private long branchId;
 
 }

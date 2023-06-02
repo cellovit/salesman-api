@@ -22,4 +22,8 @@ public interface SalesmanMapper {
 
     Salesman DTOToEntity(SalesmanDTO dto);
 
+    Salesman createRequestToEntity(SalesmanCreateRequest request);
+
+    Salesman updateRequestToEntity(SalesmanUpdateRequest request);
+
 }

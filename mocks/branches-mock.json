@@ -17,7 +17,7 @@
       "responses": [
         {
           "uuid": "eabe3ad2-70e1-47f3-bfbd-5f3de6ccf4f4",
-          "body": "[\n  {\n    \"id\": 1,\n    \"nome\": \"nome\",\n    \"cnpj\": \"cnpj\",\n    \"cidade\": \"cidade\",\n    \"uf\": \"uf\",\n    \"tipo\": \"tipo\",\n    \"ativo\": true,\n    \"dataRegistro\": \"2021911-09-11\",\n    \"ultimaAtualizacao\": \"2904-01-09\"\n  },\n  {\n    \"id\": 2,\n    \"nome\": \"nome1\",\n    \"cnpj\": \"cnpj1\",\n    \"cidade\": \"cidade1\",\n    \"uf\": \"uf1\",\n    \"tipo\": \"tipo1\",\n    \"ativo\": true,\n    \"dataRegistro\": \"2029-09-11\",\n    \"ultimaAtualizacao\": \"2904-01-09\"\n  }\n]",
+          "body": "[\n  {\n    \"id\": 1,\n    \"nome\": \"nome\",\n    \"cnpj\": \"cnpj\",\n    \"cidade\": \"cidade\",\n    \"uf\": \"uf\",\n    \"tipo\": \"tipo\",\n    \"ativo\": true,\n    \"dataRegistro\": \"2021-09-11\",\n    \"ultimaAtualizacao\": \"2004-01-09\"\n  },\n  {\n    \"id\": 2,\n    \"nome\": \"nome1\",\n    \"cnpj\": \"cnpj1\",\n    \"cidade\": \"cidade1\",\n    \"uf\": \"uf1\",\n    \"tipo\": \"tipo1\",\n    \"ativo\": true,\n    \"dataRegistro\": \"2019-09-11\",\n    \"ultimaAtualizacao\": \"2004-01-09\"\n  }\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",

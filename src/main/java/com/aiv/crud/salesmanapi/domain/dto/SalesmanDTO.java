@@ -18,6 +18,6 @@ public class SalesmanDTO {
     private String cpfCnpj;
     private String email;
     private HiringTypeEnum hiringType;
-    private transient String branch;
+    private BranchDTO branch;
 
 }

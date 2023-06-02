@@ -12,10 +12,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.concurrent.CompletableFuture;
 
 @Slf4j
 @RestController
@@ -37,23 +37,32 @@ public class SalesmanController {
 
     @GetMapping(path = "/{id}")
     public SalesmanResponse findById(@PathVariable long id) {
-        log.info(LocalDateTime.now().toString());
         return salesmanMapper.dtoToResponse(salesmanService.findById(id));
+    }
+
+    @GetMapping(path = "/matricula/{registration}")
+    public SalesmanResponse findByRegistration(@PathVariable String registration) {
+        return salesmanMapper.dtoToResponse(salesmanService.findByRegistrationAsync(registration).join());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CompletableFuture<SalesmanResponse> save(@RequestBody @Valid SalesmanCreateRequest salesmanRequest) {
-        log.info(salesmanRequest.toString());
-        var dto = salesmanMapper.createRequestToDTO(salesmanRequest);
-        return CompletableFuture.supplyAsync(() -> salesmanMapper.dtoToResponse(salesmanService.save(dto)));
+    public ResponseEntity<String> save(@RequestBody @Valid SalesmanCreateRequest salesmanRequest) {
+
+        // retornar matricula gerada
+        // criar endpoint para buscar pela matricula gerada
+
+        String registrationString = salesmanService.generateRegistrationString(salesmanRequest.getHiringType());
+        salesmanService.saveAsync(salesmanRequest, registrationString);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(registrationString);
     }
 
     @PutMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public CompletableFuture<SalesmanResponse> update(@PathVariable long id, @RequestBody @Valid SalesmanUpdateRequest salesmanRequest) {
-        var dto = salesmanMapper.updateRequestToDTO(salesmanRequest);
-        return CompletableFuture.supplyAsync(() -> salesmanMapper.dtoToResponse(salesmanService.update(id, dto)));
+    public ResponseEntity<Void> update(@PathVariable long id, @RequestBody @Valid SalesmanUpdateRequest salesmanRequest) {
+        salesmanService.updateAsync(id, salesmanRequest);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @DeleteMapping(path = "/{id}")

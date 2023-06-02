@@ -49,6 +49,6 @@ public class Salesman {
 
     @Transient
     @Column(nullable = false)
-    private transient String branch;
+    private long branchId;
 
 }

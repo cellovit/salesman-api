@@ -3,7 +3,6 @@ package com.aiv.crud.salesmanapi.domain.response;
 import com.aiv.crud.salesmanapi.domain.enums.HiringTypeEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import org.springframework.data.annotation.Transient;
 
 import java.time.LocalDate;
 
@@ -29,7 +28,6 @@ public class SalesmanResponse {
     private HiringTypeEnum hiringType;
 
     @JsonProperty("filial")
-    @Transient
-    private String branch;
+    private BranchResponse branch;
 
 }

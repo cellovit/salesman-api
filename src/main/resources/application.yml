@@ -11,3 +11,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+rest:
+  branch-api:
+    url: http://localhost:8001/api/v1/branches/
